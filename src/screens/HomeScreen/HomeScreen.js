@@ -6,7 +6,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import FormBuilder from 'react-native-paper-form-builder';
 import { useForm } from 'react-hook-form';
 import { Button, Card, Title, Paragraph } from 'react-native-paper';
-import { firebase } from '../../firebase/config'
+import { firebase } from '../../firebase/config';
+// import DatePicker from "react-datepicker";
+
+// import "react-datepicker/dist/react-datepicker.css";
 
 function HomeScreen({ navigation }) {
 
@@ -92,7 +95,10 @@ function DetailsScreen({ route, navigation }) {
       title: item.title,
       meta_description: item.meta_description,
       full_description: item.full_description,
-      featured_image: item.featured_image
+      featured_image: item.featured_image,
+      location: item.location,
+      cost: item.cost,
+      event_date: item.event_date,
     },
 
     mode: 'onChange',
@@ -183,6 +189,57 @@ function DetailsScreen({ route, navigation }) {
 
                 autoCapitalize: 'none',
               },
+            },
+            {
+                type: 'input',
+
+                name: 'location',
+
+                label: 'Location',
+
+                rules: {
+                    required: {
+                        value: false,
+                    },
+                },
+
+                textInputProps: {
+                    multiline: false,
+                },
+            },
+            {
+                type: 'input',
+
+                name: 'cost',
+
+                label: 'Cost',
+
+                rules: {
+                    required: {
+                        value: false,
+                    },
+                },
+
+                textInputProps: {
+                    multiline: false,
+                },
+            },
+            {
+                type: 'input',
+
+                name: 'event_date',
+
+                label: 'Date of Event',
+
+                rules: {
+                    required: {
+                        value: false,
+                    },
+                },
+
+                textInputProps: {
+                    multiline: false,
+                },
             },
 
           ]}>
