@@ -7,11 +7,17 @@ import FormBuilder from 'react-native-paper-form-builder';
 import { useForm } from 'react-hook-form';
 import { Button, Card, Title, Paragraph } from 'react-native-paper';
 import { firebase } from '../../firebase/config';
+// import DateTimePicker from '@react-native-community/datetimepicker';
 // import DatePicker from "react-datepicker";
 
 // import "react-datepicker/dist/react-datepicker.css";
 
 function HomeScreen({ navigation }) {
+
+  const today = new Date()
+  const tomorrow = new Date(today)
+  tomorrow.setDate(tomorrow.getDate() + 1)
+
 
   const [entities, setEntities] = useState([])
 
@@ -162,7 +168,7 @@ function DetailsScreen({ route, navigation }) {
 
               rules: {
                 required: {
-                  value: false,
+                  value: true,
                 },
               },
 
@@ -180,7 +186,7 @@ function DetailsScreen({ route, navigation }) {
 
               rules: {
                 required: {
-                  value: false,
+                  value: true,
                 },
               },
 
@@ -199,7 +205,7 @@ function DetailsScreen({ route, navigation }) {
 
                 rules: {
                     required: {
-                        value: false,
+                        value: true,
                     },
                 },
 
@@ -216,30 +222,40 @@ function DetailsScreen({ route, navigation }) {
 
                 rules: {
                     required: {
-                        value: false,
+                        value: true,
                     },
                 },
 
                 textInputProps: {
+                    keyboardType:'decimal-pad',
                     multiline: false,
                 },
             },
+            
             {
-                type: 'input',
+                type: 'string',
 
                 name: 'event_date',
 
                 label: 'Date of Event',
 
+                mode: 'date',
+
+                minDate: new Date(new Date() + 1),
+
+                // minDate: tomorrow.toString(),
+
                 rules: {
                     required: {
-                        value: false,
+                        value: true,
                     },
                 },
 
-                textInputProps: {
-                    multiline: false,
-                },
+                // textInputProps: {
+                //     // type: 'string',
+                //     mode: 'date',
+                //     // minDate: tomorrow,
+                // },
             },
 
           ]}>
