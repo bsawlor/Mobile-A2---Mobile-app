@@ -1,9 +1,12 @@
 import { StyleSheet } from 'react-native';
 
+const list_width = '80%';
+
 export default StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center'
+        alignItems: 'center',
+        //width: 200
     },
     formContainer: {
         flexDirection: 'row',
@@ -42,6 +45,7 @@ export default StyleSheet.create({
     listContainer: {
         marginTop: 20,
         padding: 20,
+        width: list_width,
     },
     entityContainer: {
         marginTop: 16,

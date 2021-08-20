@@ -29,7 +29,7 @@ export default function RegistrationScreen({navigation}) {
                     email,
                     fullName,
                 };
-                firebase.database().ref('meals/users/' + uid).set(data)
+                firebase.database().ref('users/' + uid).set(data)
                     .then((data) => {
                         navigation.replace('Home', {data})
                     })
@@ -41,6 +41,23 @@ export default function RegistrationScreen({navigation}) {
                 alert(error)
         });
     }
+
+    // const onRegisterPress = () => {
+    //     if (password !== confirmPassword) {
+    //         alert("Passwords don't match.")
+    //         return
+    //     }
+    //     firebase
+    //         .auth()
+    //         .createUserWithEmailAndPassword(email, password)
+    //         .then((response) => {
+    //             const user = response.user;
+    //             navigation.replace('Home', {user});
+    //         })
+    //         .catch((error) => {
+    //             alert(error)
+    //     });
+    // }
  
     return (
         <View style={styles.container}>

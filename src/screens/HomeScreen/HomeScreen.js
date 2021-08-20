@@ -6,9 +6,18 @@ import { createStackNavigator } from '@react-navigation/stack';
 import FormBuilder from 'react-native-paper-form-builder';
 import { useForm } from 'react-hook-form';
 import { Button, Card, Title, Paragraph } from 'react-native-paper';
-import { firebase } from '../../firebase/config'
+import { firebase } from '../../firebase/config';
+// import DateTimePicker from '@react-native-community/datetimepicker';
+// import DatePicker from "react-datepicker";
+
+// import "react-datepicker/dist/react-datepicker.css";
 
 function HomeScreen({ navigation }) {
+
+  const today = new Date()
+  const tomorrow = new Date(today)
+  tomorrow.setDate(tomorrow.getDate() + 1)
+
 
   const [entities, setEntities] = useState([])
 
@@ -92,7 +101,10 @@ function DetailsScreen({ route, navigation }) {
       title: item.title,
       meta_description: item.meta_description,
       full_description: item.full_description,
-      featured_image: item.featured_image
+      featured_image: item.featured_image,
+      location: item.location,
+      cost: item.cost,
+      event_date: item.event_date,
     },
 
     mode: 'onChange',
@@ -156,7 +168,7 @@ function DetailsScreen({ route, navigation }) {
 
               rules: {
                 required: {
-                  value: false,
+                  value: true,
                 },
               },
 
@@ -174,7 +186,7 @@ function DetailsScreen({ route, navigation }) {
 
               rules: {
                 required: {
-                  value: false,
+                  value: true,
                 },
               },
 
@@ -183,6 +195,67 @@ function DetailsScreen({ route, navigation }) {
 
                 autoCapitalize: 'none',
               },
+            },
+            {
+                type: 'input',
+
+                name: 'location',
+
+                label: 'Location',
+
+                rules: {
+                    required: {
+                        value: true,
+                    },
+                },
+
+                textInputProps: {
+                    multiline: false,
+                },
+            },
+            {
+                type: 'input',
+
+                name: 'cost',
+
+                label: 'Cost',
+
+                rules: {
+                    required: {
+                        value: true,
+                    },
+                },
+
+                textInputProps: {
+                    keyboardType:'decimal-pad',
+                    multiline: false,
+                },
+            },
+            
+            {
+                type: 'string',
+
+                name: 'event_date',
+
+                label: 'Date of Event',
+
+                mode: 'date',
+
+                minDate: new Date(new Date() + 1),
+
+                // minDate: tomorrow.toString(),
+
+                rules: {
+                    required: {
+                        value: true,
+                    },
+                },
+
+                // textInputProps: {
+                //     // type: 'string',
+                //     mode: 'date',
+                //     // minDate: tomorrow,
+                // },
             },
 
           ]}>

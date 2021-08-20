@@ -18,7 +18,7 @@ export default function LoginScreen({ navigation }) {
             .signInWithEmailAndPassword(email, password)
             .then((response) => {
                 const uid = response.user.uid
-                firebase.database().ref('meals/users/' + uid).get()
+                firebase.database().ref('users/' + uid).get()
                 .then(snapshot => {
                     if (!snapshot.exists()) {
                         alert("User does not exist anymore.")
@@ -35,6 +35,21 @@ export default function LoginScreen({ navigation }) {
                 alert(error)
             })
     }
+
+    // const onLoginPress = () => {
+    //     firebase
+    //         .auth()
+    //         .signInWithEmailAndPassword(email, password)
+    //         .then((response) => {
+    //             const user = response.user;
+    //             navigation.replace('Home', { user })
+    //         })
+    //         .catch(error => {
+    //             alert(error)
+    //         })
+    // }
+
+
     return (
         <View style={styles.container}>
             <KeyboardAwareScrollView

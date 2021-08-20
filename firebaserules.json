@@ -1,10 +1,51 @@
+// {
+//     "rules": {
+//       ".read": "now < 1616558400000",  // 2021-3-24
+//       ".write": "now < 1616558400000",  // 2021-3-24
+//         "meals":{
+//       ".read": true, //anyone can read
+//       ".write": "auth.uid != null", // need to be logged in to write
+//     }
+//     }
+//   }
+
+// {
+//   "rules": {
+//     ".read": "now < 1627012800000",  // 2021-7-23
+//     ".write": "now < 1627012800000",  // 2021-7-23
+//         "popup-meals":{
+//       ".read": true, //anyone can read
+//       ".write": "auth.uid != null", // need to be logged in to write
+//     },
+//       "users":{
+//       ".read": true, //anyone can read
+//       ".write": "auth.uid != null", // need to be logged in to write
+//     }
+//   }
+// }
+
+// {
+//   "rules": {
+//     ".read": "now < 1632024000000",  // 2021-9-19
+//     ".write": "now < 1632024000000",  // 2021-9-19
+//       "popup-meals": {
+//         ".read": "now < 1632024000000",
+//           ".write": "now < 1632024000000",
+//       }
+//   }
+// }
+
 {
-    "rules": {
-      ".read": "now < 1616558400000",  // 2021-3-24
-      ".write": "now < 1616558400000",  // 2021-3-24
+  "rules": {
+    ".read": "now < 1632024000000",  // 2021-9-19
+    ".write": "now < 1632024000000",  // 2021-9-19
         "meals":{
       ".read": true, //anyone can read
       ".write": "auth.uid != null", // need to be logged in to write
-    }
+    },
+      "users":{
+      ".read": true, //anyone can read
+      ".write": "auth.uid != null", // need to be logged in to write
     }
   }
+}
